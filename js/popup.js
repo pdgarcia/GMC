@@ -9,6 +9,7 @@
  * @type {string}
  */
 var QUERY = 'ferrari';
+var QueryURL = 'http://localhost/gadget.json' ;
 
 var kittenGenerator = {
   /**
@@ -56,7 +57,8 @@ var kittenGenerator = {
       var img = document.createElement('img');
       img.src = this.constructKittenURL_(kittens[i]);
       img.setAttribute('alt', kittens[i].getAttribute('title'));
-      document.body.appendChild(img);
+      /** document.body.kittens.appendChild(img); */
+      document.getElementById('kittens').appendChild(img);
     }
   },
 
@@ -76,8 +78,14 @@ var kittenGenerator = {
         "_s.jpg";
   }
 };
-
+function GMCUpdate(){
+  var alertline = chrome.i18n.getMessage("statusLabel") + " " + "OK" + " " + chrome.i18n.getMessage("dateLabel")+ "27/10/2014, 19:56";
+  document.getElementById('alertline').innerText = alertline;
+  document.getElementById('firstdispatch').innerText = chrome.i18n.getMessage("FirstDispLabel") + " " + "Karol";
+  document.getElementById('seconddispatch').innerText = chrome.i18n.getMessage("SecondDispLabel") + " " + "Santos";
+};
 // Run our kitten generation script as soon as the document's DOM is ready.
 document.addEventListener('DOMContentLoaded', function () {
-  kittenGenerator.requestKittens();
+  GMCUpdate();
+  //kittenGenerator.requestKittens();
 });

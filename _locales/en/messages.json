@@ -1,0 +1,26 @@
+{
+  "extensionName": {
+    "message": "GMC",
+    "description": "Extension name."
+  },
+  "extensionDescription": {
+    "message": "Global Messaging & Collaboration extension.",
+    "description": "Extension description."
+  },
+  "statusLabel": {
+    "message": "Current Status:",
+    "description": "Current Status Label."
+  },
+  "dateLabel": {
+    "message": "Last Update:",
+    "description": "Date of the last update of the information."
+  },
+  "FirstDispLabel": {
+    "message": "First Dispatcher: ",
+    "description": "First Dispatcher information."
+  },
+  "SecondDispLabel": {
+    "message": "Second Dispatcher: ",
+    "description": "Second Dispatcher information."
+  }
+}
