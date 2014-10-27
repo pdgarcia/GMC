@@ -1,0 +1,20 @@
+{
+  "manifest_version": 2,
+
+  "name": "GMC",
+  "description": "GMC Gadget",
+  "version": "1.0",
+  "options_page": "options.html",
+  "background": {
+    "persistent": false,
+    "scripts": ["js/background.js"]
+  },
+  "permissions": [
+    "https://secure.flickr.com/",
+    "http://rkamv1175.kau.roche.com/mstats/"
+  ],
+  "browser_action": {
+    "default_icon": "images/icon_green.png",
+    "default_popup": "popup.html"
+  }
+}
