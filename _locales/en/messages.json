@@ -11,6 +11,14 @@
     "message": "Current Status:",
     "description": "Current Status Label."
   },
+    "statusOK": {
+    "message": "All Working",
+    "description": "Current Status OK."
+  },
+    "statusNOK": {
+    "message": "We have issues",
+    "description": "Current Status Not OK."
+  },
   "dateLabel": {
     "message": "Last Update:",
     "description": "Date of the last update of the information."

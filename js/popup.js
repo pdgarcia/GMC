@@ -1,91 +1,30 @@
-// Copyright (c) 2012 The Chromium Authors. All rights reserved.
-// Use of this source code is governed by a BSD-style license that can be
-// found in the LICENSE file.
-
-/**
- * Global variable containing the query we'd like to pass to Flickr. In this
- * case, kittens!
- *
- * @type {string}
- */
-var QUERY = 'ferrari';
 var QueryURL = 'http://localhost/gadget.json' ;
 
-var kittenGenerator = {
-  /**
-   * Flickr URL that will give us lots and lots of whatever we're looking for.
-   *
-   * See http://www.flickr.com/services/api/flickr.photos.search.html for
-   * details about the construction of this URL.
-   *
-   * @type {string}
-   * @private
-   */
-  searchOnFlickr_: 'https://secure.flickr.com/services/rest/?' +
-      'method=flickr.photos.search&' +
-      'api_key=3129f004b3d82c0d0bedf695e6c90fdc&' +
-      'text=' + encodeURIComponent(QUERY) + '&' +
-      'safe_search=1&' +
-      'content_type=1&' +
-      'sort=interestingness-desc&' +
-      'per_page=20',
-
-  /**
-   * Sends an XHR GET request to grab photos of lots and lots of kittens. The
-   * XHR's 'onload' event is hooks up to the 'showPhotos_' method.
-   *
-   * @public
-   */
-  requestKittens: function() {
-    var req = new XMLHttpRequest();
-    req.open("GET", this.searchOnFlickr_, true);
-    req.onload = this.showPhotos_.bind(this);
-    req.send(null);
-  },
-
-  /**
-   * Handle the 'onload' event of our kitten XHR request, generated in
-   * 'requestKittens', by generating 'img' elements, and stuffing them into
-   * the document for display.
-   *
-   * @param {ProgressEvent} e The XHR ProgressEvent.
-   * @private
-   */
-  showPhotos_: function (e) {
-    var kittens = e.target.responseXML.querySelectorAll('photo');
-    for (var i = 0; i < kittens.length; i++) {
-      var img = document.createElement('img');
-      img.src = this.constructKittenURL_(kittens[i]);
-      img.setAttribute('alt', kittens[i].getAttribute('title'));
-      /** document.body.kittens.appendChild(img); */
-      document.getElementById('kittens').appendChild(img);
+function GMCUpdate(){
+  xmlhttp = new XMLHttpRequest();
+  xmlhttp.open("GET", QueryURL, false);
+  xmlhttp.send(null);
+  if (xmlhttp.status == 200) {
+    var data = JSON.parse(xmlhttp.responseText)
+    console.log(data);
+    if(data.status == 0){
+      chrome.browserAction.setIcon({path:"img/icon_green.png"});
+      txtstatus=chrome.i18n.getMessage("statusOK");
+    }else{
+      chrome.browserAction.setIcon({path:"img/icon_red.png"});
+      txtstatus=chrome.i18n.getMessage("statusNOK");
     }
-  },
-
-  /**
-   * Given a photo, construct a URL using the method outlined at
-   * http://www.flickr.com/services/api/misc.urlKittenl
-   *
-   * @param {DOMElement} A kitten.
-   * @return {string} The kitten's URL.
-   * @private
-   */
-  constructKittenURL_: function (photo) {
-    return "http://farm" + photo.getAttribute("farm") +
-        ".static.flickr.com/" + photo.getAttribute("server") +
-        "/" + photo.getAttribute("id") +
-        "_" + photo.getAttribute("secret") +
-        "_s.jpg";
+    var alertline = chrome.i18n.getMessage("statusLabel") + " " + txtstatus + "<br>" + chrome.i18n.getMessage("dateLabel")+ data.lastupdate;
+    document.getElementById('alertline').innerHTML = alertline;
+    document.getElementById('alerts').innerHTML = data.alerts;
+    document.getElementById('firstdispatch').innerText = chrome.i18n.getMessage("FirstDispLabel") + " " + data.firstdispatch;
+    document.getElementById('seconddispatch').innerText = chrome.i18n.getMessage("SecondDispLabel") + " " + data.seconddispatch;
+  } else {
+    document.body.innerHTML("Failed to load the data !");
+    chrome.browserAction.setIcon({path:"img/icon_gray.png"});
   }
 };
-function GMCUpdate(){
-  var alertline = chrome.i18n.getMessage("statusLabel") + " " + "OK" + " " + chrome.i18n.getMessage("dateLabel")+ "27/10/2014, 19:56";
-  document.getElementById('alertline').innerText = alertline;
-  document.getElementById('firstdispatch').innerText = chrome.i18n.getMessage("FirstDispLabel") + " " + "Karol";
-  document.getElementById('seconddispatch').innerText = chrome.i18n.getMessage("SecondDispLabel") + " " + "Santos";
-};
-// Run our kitten generation script as soon as the document's DOM is ready.
+
 document.addEventListener('DOMContentLoaded', function () {
   GMCUpdate();
-  //kittenGenerator.requestKittens();
 });

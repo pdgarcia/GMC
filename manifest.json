@@ -13,6 +13,7 @@
     "scripts": ["js/background.js"]
   },
   "permissions": [
+    "alarms",
     "https://secure.flickr.com/",
     "http://rkamv1175.kau.roche.com/mstats/",
     "http://localhost/"
