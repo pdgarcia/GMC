@@ -3,7 +3,7 @@
 
   "name": "__MSG_extensionName__",
   "description": "__MSG_extensionDescription__",
-  "version": "1.0",
+  "version": "0.0.1",
   "options_page": "options.html",
   "icons": { "16":  "img/icon16.png",
              "48":  "img/icon48.png",
@@ -13,8 +13,9 @@
     "scripts": ["js/background.js"]
   },
   "permissions": [
+    "tabs",
     "alarms",
-    "https://secure.flickr.com/",
+    "background",
     "http://rkamv1175.kau.roche.com/mstats/",
     "http://localhost/"
   ],
