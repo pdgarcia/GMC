@@ -1,13 +1,13 @@
 var QueryURL = 'http://localhost/gadget.json' ;
 
 function onAlarm(alarm){
-	console.log('alarm fired',alarm);
+	//console.log('alarm fired',alarm);
 	xmlhttp = new XMLHttpRequest();
 	xmlhttp.open("GET", QueryURL, false);
 	xmlhttp.send(null);
 	if (xmlhttp.status == 200) {
 		var data = JSON.parse(xmlhttp.responseText)
-		console.log(data);
+		console.log("Status Retrieved:"+data.status);
 		if(data.status == 0){
 			chrome.browserAction.setIcon({path:"img/icon_green.png"});
 		}else{
@@ -22,7 +22,8 @@ function onAlarm(alarm){
 function onInit() {
 	console.log('onInit');
 	chrome.alarms.create('GMC_Gadget', {periodInMinutes: 1});
-	chrome.alarms.onAlarm.addListener(onAlarm);
+	onAlarm();
 }
 
 chrome.runtime.onInstalled.addListener(onInit);
+chrome.alarms.onAlarm.addListener(onAlarm);
