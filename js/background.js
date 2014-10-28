@@ -1,4 +1,4 @@
-var QueryURL = 'http://localhost/gadget.json' ;
+var QueryURL = 'http://rkamv1175.kau.roche.com/mstats/gadget.html' ;
 
 function onAlarm(alarm){
 	//console.log('alarm fired',alarm);

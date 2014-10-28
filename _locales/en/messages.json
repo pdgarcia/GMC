@@ -23,12 +23,16 @@
     "message": "Last Update:",
     "description": "Date of the last update of the information."
   },
-  "FirstDispLabel": {
-    "message": "First Dispatcher: ",
-    "description": "First Dispatcher information."
+  "DispatcherDispLabel": {
+    "message": "Dispatcher: ",
+    "description": "Dispatcher information."
   },
-  "SecondDispLabel": {
-    "message": "Second Dispatcher: ",
-    "description": "Second Dispatcher information."
+  "OOFDispLabel": {
+    "message": "OOF: ",
+    "description": "Out Of Office information."
+  },
+  "tktunasigned": {
+    "message": "Unasigned Tickets: ",
+    "description": "Number of Unasigned Tickets."
   }
 }

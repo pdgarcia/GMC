@@ -14,9 +14,10 @@
   },
   "permissions": [
     "tabs",
+    "storage",
     "alarms",
     "background",
-    "http://rkamv1175.kau.roche.com/mstats/",
+    "http://rkamv1175.kau.roche.com/mstats/*",
     "http://localhost/"
   ],
   "browser_action": {
