@@ -1,16 +1,10 @@
 body {
     min-width: 357px;
     overflow-x: hidden;
-    font-family: "Verdana, Geneva, Arial, Helvetica, sans-serif";
+    font-family: "arial,sans-serif";
     font-size: 16px;
 }
-img {
-    margin: 5px;
-    border: 2px solid black;
-    vertical-align: middle;
-    width: 75px;
-    height: 75px;
-}
+
 #alertline {
     clear: both;
     width: 100%;
@@ -27,7 +21,7 @@ img {
     border: 1px,solid;
     background-color: black;
     color: white;
-    font-size: 2em;
+    font-size: 1.5em;
 }
 .dispatcher{
     clear: both;
@@ -45,4 +39,22 @@ img {
     border: 1px,solid;
     background-color: lightgray;
     color: gray;
+}
+.alertcategory{
+    clear: both;
+    width: 100%;
+    margin: 1px;
+    padding: 8px;
+    border: 1px,solid;
+    background-color: lightgray;
+}
+.alertitem{
+    clear: both;
+    width: 100%;
+    margin: 1px;
+    padding: 8px;
+    border: 1px,solid;
+    background-color: lightgray;
+    color: gray;
+    display:none;
 }

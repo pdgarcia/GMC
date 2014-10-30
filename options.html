@@ -1,14 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head><title>GMC Options</title></head>
+<style type="text/css">
+	#optable{
+		padding: 10px;
+	}
+	.optinp{
+		width:300px;
+	}
+</style>
 <body>
-
-Dashboard link: <input type="text" id="Dashlink"><br>
-Gadget information link: <input type="text" id="GadLink">
-
-<div id="status"></div>
-<button id="save">Save</button>
-
+<table id='optable'>
+  <tr>
+    <td>Dashboard link:</td>
+    <td><input type="text" id="Dashlink" class='optinp' ></td>
+  </tr>
+  <tr>
+    <td>Gadget information link:</td>
+    <td><input type="text" id="DataLink" class='optinp' ></td>
+  </tr>
+  <tr>
+    <td><button id="save">Save</button></td>
+    <td><div id="status"></div></td>
+  </tr>
+</table>
 <script src="js/options.js"></script>
 </body>
 </html>

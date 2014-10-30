@@ -1,8 +1,25 @@
-var QueryURL = 'http://rkamv1175.kau.roche.com/mstats/gadget.html' ;
-var LinkURL  = 'http://rkamv1175.kau.roche.com/mstats/' ;
+
+function ajaxJSONGet(url, callback){
+    var http_request = new XMLHttpRequest();
+    http_request.open("GET", url, true);
+    http_request.onreadystatechange = function () {
+        var done = 4;
+        var ok = 200;
+        if (http_request.readyState === done && http_request.status === ok){
+            callback(JSON.parse(http_request.responseText));
+        } else {
+            chrome.browserAction.setIcon({path:"img/icon_gray.png"});
+        }
+    };
+    http_request.send();
+}
 
 function openTab(){
-  chrome.tabs.create({url : LinkURL}, function(tab) { });
+  chrome.storage.sync.get({
+    Dashlink: 'http://rkamv1175.kau.roche.com/mstats/'
+  }, function(items) {
+    chrome.tabs.create({url: items.Dashlink}, function(tab) { });
+  });
 }
 
 function processData(data){
@@ -15,55 +32,45 @@ function processData(data){
       txtstatus=chrome.i18n.getMessage("statusNOK");
       bkcolor='red';
     }
-    var alertline = chrome.i18n.getMessage("statusLabel") + " " + txtstatus + "<br>" + chrome.i18n.getMessage("dateLabel")+ data.lastupdate;
     var alertlineobj = document.getElementById('alertline')
-    alertlineobj.innerHTML = alertline;
+    alertlineobj.innerHTML = chrome.i18n.getMessage("statusLabel") + " " + txtstatus + "<br>" + chrome.i18n.getMessage("dateLabel")+ data.lastupdate;
     alertlineobj.style.backgroundColor=bkcolor;
     alertlineobj.addEventListener("click", openTab);
-    document.getElementById('tktunasigned').innerText = chrome.i18n.getMessage("tktunasigned") + " " + data.tktunasigned;
-    document.getElementById('alerts').innerHTML = data.alerts;
+    document.getElementById('tktunasigned').innerText = chrome.i18n.getMessage("tktunassigned") + " " + data.tktunasigned;
+    console.log(data);
+    alertlist=data.alertlist;
+    for (var cat in alertlist) {
+        console.log(cat);
+        var category = document.createElement('div');
+        category.setAttribute("class","alertcategory");
+        category.innerText = cat;
+        document.getElementById('alerts').appendChild(category);
+        for (var i in cat) {
+            console.log(i.name);
+            var element = document.createElement('div');
+            element.setAttribute("class","alertitem");
+            element.innerText = i.name;
+            category.appendChild(element);
+        }
+    }
     for (val of data.dispatcher) {
-        console.log(val);
         var element = document.createElement('div');
-        //element.id = "someID";
         element.setAttribute("class","dispatcher");
         element.innerText = chrome.i18n.getMessage("DispatcherDispLabel") + " " +val;
         document.getElementById('dispatchers').appendChild(element);
     }
     for (val of data.oof) {
-        console.log(val);
         var element = document.createElement('div');
-        //element.id = "someID";
         element.setAttribute("class","oof");
         element.innerText = chrome.i18n.getMessage("OOFDispLabel") + " " + val;
         document.getElementById('oof').appendChild(element);
     }
-    //document.getElementById('firstdispatch').innerText = chrome.i18n.getMessage("FirstDispLabel") + " " + data.firstdispatch;
-    //document.getElementById('seconddispatch').innerText = chrome.i18n.getMessage("SecondDispLabel") + " " + data.seconddispatch;
 }
 
-function GMCUpdate(){
-  xmlhttp = new XMLHttpRequest();
-  console.log(QueryURL);
-  xmlhttp.open("GET", QueryURL, false);
-  xmlhttp.send(null);
-  if (xmlhttp.status == 200) {
-    var data = JSON.parse(xmlhttp.responseText)
-    console.log("Status Retrieved:"+data.status);
-    processData(data);
-  } else {
-    document.body.innerHTML("Failed to load the data !");
-    chrome.browserAction.setIcon({path:"img/icon_gray.png"});
-  }
-};
-
 document.addEventListener('DOMContentLoaded', function () {
-  /*chrome.storage.sync.get({
-    Dashlink: 'http://rkamv1175.kau.roche.com/mstats/',
-    GadLink: 'http://rkamv1175.kau.roche.com/mstats/gadget.html'
+  chrome.storage.sync.get({
+    DataLink: 'http://rkamv1175.kau.roche.com/mstats/gadget.html'
   }, function(items) {
-    LinkURL  =  items.Dashlink;
-    QueryURL =  items.GadLink;
-  });*/
-  GMCUpdate();
+    ajaxJSONGet(items.DataLink+'?q=GMC', processData);
+  });
 });

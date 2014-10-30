@@ -31,8 +31,12 @@
     "message": "OOF: ",
     "description": "Out Of Office information."
   },
-  "tktunasigned": {
-    "message": "Unasigned Tickets: ",
-    "description": "Number of Unasigned Tickets."
+  "tktunassigned": {
+    "message": "Unassigned Tickets: ",
+    "description": "Number of Unassigned Tickets."
+  },
+  "NotificationMessage": {
+    "message": "Issues detected",
+    "description": "Notification Message."
   }
 }

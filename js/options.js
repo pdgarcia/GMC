@@ -1,10 +1,10 @@
 // Saves options to chrome.storage
 function save_options() {
   var Dashlink = document.getElementById('Dashlink').value;
-  var GadLink = document.getElementById('GadLink').value;
+  var GadLink = document.getElementById('DataLink').value;
   chrome.storage.sync.set({
     Dashlink: Dashlink,
-    GadLink: GadLink
+    DataLink: GadLink
   }, function() {
     // Update status to let user know options were saved.
     var status = document.getElementById('status');
@@ -20,10 +20,10 @@ function save_options() {
 function restore_options() {
   chrome.storage.sync.get({
     Dashlink: 'http://rkamv1175.kau.roche.com/mstats/',
-    GadLink: 'http://rkamv1175.kau.roche.com/mstats/gadget.html'
+    DataLink:  'http://rkamv1175.kau.roche.com/mstats/gadget.html'
   }, function(items) {
     document.getElementById('Dashlink').value = items.Dashlink;
-    document.getElementById('GadLink').value = items.GadLink;
+    document.getElementById('DataLink').value = items.DataLink;
   });
 }
 document.addEventListener('DOMContentLoaded', restore_options);
