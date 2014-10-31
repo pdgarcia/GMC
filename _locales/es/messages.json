@@ -1,0 +1,42 @@
+{
+  "extensionName": {
+    "message": "GMC Gadget",
+    "description": "Nombre de la Extension."
+  },
+  "extensionDescription": {
+    "message": "Global Messaging & Collaboration extension.",
+    "description": "Descriptcion de la Extension."
+  },
+  "statusLabel": {
+    "message": "Current Status:",
+    "description": "Current Status Label."
+  },
+    "statusOK": {
+    "message": "All Working",
+    "description": "Current Status OK."
+  },
+    "statusNOK": {
+    "message": "Problemas detectados",
+    "description": "El sistema a detectado problemas."
+  },
+  "dateLabel": {
+    "message": "Ultima Modificacion:",
+    "description": "Fecha de la ultima modificacion de la informacion en el server."
+  },
+  "DispatcherDispLabel": {
+    "message": "Dispatcher: ",
+    "description": "Dispatcher information."
+  },
+  "OOFDispLabel": {
+    "message": "OOF: ",
+    "description": "Out Of Office information."
+  },
+  "tktunassigned": {
+    "message": "Tickets no assignados: ",
+    "description": "Numero de tickets no assignados."
+  },
+  "NotificationMessage": {
+    "message": "Issues detected",
+    "description": "Notification Message."
+  }
+}
