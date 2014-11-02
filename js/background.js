@@ -26,14 +26,14 @@ function ajaxJSONGet(url, callback){
 }
 
 function processData(data){
-    console.log("Status Retrieved:"+data.status);
+    console.log("Status Retrieved:"+data.status+ " PreviousStatus:"+localStorage['PreviousStatus']);
     if(data.status == 0){
         chrome.browserAction.setIcon({path:"img/icon_green.png"});
-        localStorage['PreviousStatus']=0;
+        localStorage['PreviousStatus'] = 0;
     }else{
         if( localStorage['PreviousStatus'] == 0 ){ LauchNotification() }
         chrome.browserAction.setIcon({path:"img/icon_red.png"});
-        localStorage['PreviousStatus']=1;
+        localStorage['PreviousStatus'] = 1;
     }
 }
 
