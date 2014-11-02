@@ -15,7 +15,7 @@ function JSONGet(url){
         .html(chrome.i18n.getMessage("statusLabel") + " " + txtstatus + "<br>" + chrome.i18n.getMessage("dateLabel") + " " + data.lastupdate)
         .css( "background-color", bkcolor ).click(openTab);
 
-    $('div#tktunasigned').html = chrome.i18n.getMessage("tktunassigned") + " " + data.tktunasigned;
+    $('div#tktunasigned').html(chrome.i18n.getMessage("tktunassigned") + " " + data.tktunasigned);
 
     var items = [];
     $.each( data.alertlist, function( key, val ) {
