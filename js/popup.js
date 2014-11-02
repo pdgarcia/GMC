@@ -12,7 +12,7 @@ function JSONGet(url){
     }
 
     $( 'div#alertline' )
-        .html(chrome.i18n.getMessage("statusLabel") + " " + txtstatus + "<br>" + chrome.i18n.getMessage("dateLabel") + data.lastupdate)
+        .html(chrome.i18n.getMessage("statusLabel") + " " + txtstatus + "<br>" + chrome.i18n.getMessage("dateLabel") + " " + data.lastupdate)
         .css( "background-color", bkcolor ).click(openTab);
 
     $('div#tktunasigned').html = chrome.i18n.getMessage("tktunassigned") + " " + data.tktunasigned;
@@ -37,7 +37,7 @@ function JSONGet(url){
     $( "div#dispatchers" ).append(items.join( "" ));
 
     var items = [];
-    $.each( data.dispatcher, function( key, val ) {
+    $.each( data.oof, function( key, val ) {
         items.push( "<div class='oof' id='" + key + "'>" + chrome.i18n.getMessage("OOFDispLabel") + " " + val + "</div>" );
     });
     $( "div#oof" ).append(items.join( "" ));
@@ -60,6 +60,6 @@ $(function () {
     chrome.storage.sync.get({
         DataLink: 'http://rkamv1175.kau.roche.com/mstats/gadget.html'
     }, function(items) {
-        JSONGet(DataLink+'?q=GMC');
+        JSONGet(items.DataLink+'?q=GMC');
     });
 });
