@@ -1,4 +1,3 @@
-
 function JSONGet(url){
     $.ajaxSetup({ cache:false });
     $.getJSON( url, function( data ) {
@@ -27,7 +26,7 @@ function JSONGet(url){
         items.push(  "</div>" );
     });
 
-    $( "div#alerts" ).append(items.join( "" ));
+    $('div#alerts').append(items.join( "" ));
 
     $('div.alertcategory').click(function(){ $(this).children().toggle(); })
 
@@ -35,17 +34,18 @@ function JSONGet(url){
     $.each( data.dispatcher, function( key, val ) {
         items.push( "<div class='dispatcher' id='" + key + "'>" + chrome.i18n.getMessage("DispatcherDispLabel") + " " + val + "</div>" );
     });
-    $( "div#dispatchers" ).append(items.join( "" ));
+    $('div#dispatchers').append(items.join( "" ));
 
     var items = [];
     $.each( data.oof, function( key, val ) {
         items.push( "<div class='oof' id='" + key + "'>" + chrome.i18n.getMessage("OOFDispLabel") + " " + val + "</div>" );
     });
-    $( "div#oof" ).append(items.join( "" ));
+    $('div#oof').append(items.join( "" ));
 
     }).fail(function() {
         console.log( "error conectando" );
         chrome.browserAction.setIcon({path:"img/icon_gray.png"});
+        $('body').html("<div class='errormessage'>" + chrome.i18n.getMessage("NoConnectionMessage") + "</div>");
   });
 }
 
@@ -57,7 +57,7 @@ function openTab(){
     });
 }
 
-$(function () {
+$(function() {
     chrome.storage.sync.get({
         DataLink: 'http://rkamv1175.kau.roche.com/mstats/gadget.html'
     }, function(items) {

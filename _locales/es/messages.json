@@ -38,5 +38,9 @@
   "NotificationMessage": {
     "message": "Problemas detectados",
     "description": "Mensaje de notificacion."
+  },
+  "NoConnectionMessage": {
+    "message": "No hay conexión con el Servidor",
+    "description": "Mensaje de error de conexión."
   }
 }

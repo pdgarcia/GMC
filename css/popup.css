@@ -55,3 +55,8 @@ body {
     color: gray;
     display:none;
 }
+.errormessage{
+    padding: 10px;
+    font-size: 2em;
+    text-align: center;
+}
