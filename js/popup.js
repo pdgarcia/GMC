@@ -1,5 +1,6 @@
 
 function JSONGet(url){
+    $.ajaxSetup({ cache:false });
     $.getJSON( url, function( data ) {
     if(data.status == 0){
         chrome.browserAction.setIcon({path:"img/icon_green.png"});
@@ -60,6 +61,6 @@ $(function () {
     chrome.storage.sync.get({
         DataLink: 'http://rkamv1175.kau.roche.com/mstats/gadget.html'
     }, function(items) {
-        JSONGet(items.DataLink+'?q=GMC');
+        JSONGet(items.DataLink);
     });
 });

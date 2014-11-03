@@ -41,17 +41,16 @@ function onAlarm(alarm){
     chrome.storage.sync.get({
         DataLink: 'http://rkamv1175.kau.roche.com/mstats/gadget.html'
     }, function(items) {
-        ajaxJSONGet(items.DataLink+'?q=GMC', processData);
+        ajaxJSONGet(items.DataLink+'?' + new Date().getTime(), processData);
     });
 }
 
 function onInit() {
     console.log('onInit');
+    localStorage['PreviousStatus'] = 0;
     chrome.alarms.create('GMC_Gadget', {periodInMinutes: 0.5});
     onAlarm();
 }
-
-localStorage['PreviousStatus'] = 0;
 
 chrome.runtime.onInstalled.addListener(onInit);
 chrome.alarms.onAlarm.addListener(onAlarm);
