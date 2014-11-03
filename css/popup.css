@@ -28,7 +28,7 @@ body {
     margin: 1px;
     padding: 8px;
     border: 1px solid;
-    background-color: lightgray;
+    background-color: lightblue;
 }
 .oof{
     clear: both;
@@ -36,7 +36,7 @@ body {
     margin: 1px;
     padding: 8px;
     border: 1px solid;
-    background-color: lightgray;
+    background-color: white;
     color: gray;
 }
 .alertcategory{
