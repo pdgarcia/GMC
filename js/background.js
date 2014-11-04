@@ -1,13 +1,19 @@
 
 function LauchNotification(){
-    var opt = {
-        type: 'basic',
-        title: 'GMC',
-        message: chrome.i18n.getMessage("NotificationMessage"),
-        priority: 2,
-        iconUrl:'img/icon128.png'
-    };
-    chrome.notifications.create('notify1', opt, function(id) { });
+    chrome.storage.sync.get({
+        NotConf : true
+    }, function(items) {
+        if( items.NotConf ){
+            var opt = {
+                type: 'basic',
+                title: 'GMC',
+                message: chrome.i18n.getMessage("NotificationMessage"),
+                priority: 2,
+                iconUrl:'img/icon128.png'
+            };
+            chrome.notifications.create('notify1', opt, function(id) { });
+        }
+    })
 }
 
 function ajaxJSONGet(url, callback){
@@ -31,7 +37,9 @@ function processData(data){
         chrome.browserAction.setIcon({path:"img/icon_green.png"});
         localStorage['PreviousStatus'] = 0;
     }else{
-        if( localStorage['PreviousStatus'] == 0 ){ LauchNotification() }
+        if( localStorage['PreviousStatus'] == 0 ){
+            LauchNotification()
+        }
         chrome.browserAction.setIcon({path:"img/icon_red.png"});
         localStorage['PreviousStatus'] = 1;
     }
@@ -48,7 +56,7 @@ function onAlarm(alarm){
 function onInit() {
     console.log('onInit');
     localStorage['PreviousStatus'] = 0;
-    chrome.alarms.create('GMC_Gadget', {periodInMinutes: 0.5});
+    chrome.alarms.create('GMC_Gadget', {periodInMinutes: 1});
     onAlarm();
 }
 
