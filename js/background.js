@@ -55,7 +55,9 @@ function onAlarm(alarm){
 
 function onInit() {
     console.log('onInit');
-    localStorage['PreviousStatus'] = 0;
+    if(localStorage.getItem("PreviousStatus") === null){
+        localStorage['PreviousStatus'] = 0;
+    }
     chrome.alarms.create('GMC_Gadget', {periodInMinutes: 1});
     onAlarm();
 }
