@@ -1,11 +1,16 @@
 function JSONGet(url){
     $.ajaxSetup({ cache:false });
     $.getJSON( url, function( data ) {
-    if(data.status == 0){
-        chrome.browserAction.setIcon({path:"img/icon_green.png"});
-        txtstatus=chrome.i18n.getMessage("statusOK");
-        bkcolor='green';
-    }else{
+    chrome.browserAction.setIcon({path:"img/icon_green.png"});
+    txtstatus=chrome.i18n.getMessage("statusOK");
+    bkcolor='green';
+
+    if(data.status > 10){
+        chrome.browserAction.setIcon({path:"img/icon_red.png"});
+        txtstatus=chrome.i18n.getMessage("statusNOK");
+        bkcolor='#FF9933';
+    }
+    if(data.status > 50){
         chrome.browserAction.setIcon({path:"img/icon_red.png"});
         txtstatus=chrome.i18n.getMessage("statusNOK");
         bkcolor='red';
