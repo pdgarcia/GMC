@@ -24,11 +24,11 @@
     "description": "Date of the last update of the information."
   },
   "SPOCDispLabel": {
-    "message": "SPOC: ",
+    "message": "SPOC",
     "description": "SPOC information."
   },
   "OOFDispLabel": {
-    "message": "OOF: ",
+    "message": "OOF",
     "description": "Out Of Office information."
   },
   "tktunassigned": {

@@ -37,13 +37,13 @@ function JSONGet(url){
 
     var items = [];
     $.each( data.dispatcher, function( key, val ) {
-        items.push( "<div class='spoc' id='" + key + "'><small>" + chrome.i18n.getMessage("SPOCDispLabel") + key + ": </small>" + val + "</div>" );
+        items.push( "<div class='spoc' id='" + key + "'><small>" + chrome.i18n.getMessage("SPOCDispLabel") + " " + key + ": </small>" + val + "</div>" );
     });
     $('div#spocs').append(items.join( "" ));
 
     var items = [];
     $.each( data.oof, function( key, val ) {
-        items.push( "<div class='oof' id='" + key + "'><small>" + chrome.i18n.getMessage("OOFDispLabel") + "</small> " + val + "</div>" );
+        items.push( "<div class='oof' id='" + key + "'><small>" + chrome.i18n.getMessage("OOFDispLabel") + ": </small>" + val + "</div>" );
     });
     $('div#oof').append(items.join( "" ));
 
