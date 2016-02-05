@@ -23,8 +23,8 @@
     "message": "Ultima Modificacion:",
     "description": "Fecha de la ultima modificacion de la informacion en el server."
   },
-  "DispatcherDispLabel": {
-    "message": "Dispatcher: ",
+  "SPOCDispLabel": {
+    "message": "SPOC: ",
     "description": "Dispatcher information."
   },
   "OOFDispLabel": {

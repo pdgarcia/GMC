@@ -23,9 +23,9 @@
     "message": "Last Update:",
     "description": "Date of the last update of the information."
   },
-  "DispatcherDispLabel": {
-    "message": "Dispatcher: ",
-    "description": "Dispatcher information."
+  "SPOCDispLabel": {
+    "message": "SPOC: ",
+    "description": "SPOC information."
   },
   "OOFDispLabel": {
     "message": "OOF: ",

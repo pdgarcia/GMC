@@ -37,9 +37,9 @@ function JSONGet(url){
 
     var items = [];
     $.each( data.dispatcher, function( key, val ) {
-        items.push( "<div class='dispatcher' id='" + key + "'>" + chrome.i18n.getMessage("DispatcherDispLabel") + " " + val + "</div>" );
+        items.push( "<div class='spoc' id='" + key + "'>" + chrome.i18n.getMessage("SPOCDispLabel") + " " + val + "</div>" );
     });
-    $('div#dispatchers').append(items.join( "" ));
+    $('div#spocs').append(items.join( "" ));
 
     var items = [];
     $.each( data.oof, function( key, val ) {
