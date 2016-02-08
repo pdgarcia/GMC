@@ -8,23 +8,26 @@
 	.optinp{
 		width:350px;
 	}
+	.opttext{
+		width:150px;
+	}
 </style>
 <body>
 <table id='optable'>
   <tr>
-    <td>Notifications on Errors:</td>
+    <td class='opttext'>Notifications on Errors:</td>
     <td><input type="checkbox" id="NotConf"></td>
   </tr>
   <tr>
-    <td>Dashboard link:</td>
+    <td class='opttext'>Dashboard link:</td>
     <td><input type="text" id="Dashlink" class='optinp' ></td>
   </tr>
   <tr>
-    <td>Gadget information link:</td>
+    <td class='opttext'>Gadget information link:</td>
     <td><input type="text" id="DataLink" class='optinp' ></td>
   </tr>
   <tr>
-    <td><button id="save">Save</button></td>
+    <td><button id="save" class='opttext'>Save</button></td>
     <td><div id="status"></div></td>
   </tr>
 </table>

@@ -5,6 +5,10 @@
   "description": "__MSG_extensionDescription__",
   "version": "0.1.1",
   "options_page": "options.html",
+  "options_ui": {
+    "page": "options.html",
+    "chrome_style": false
+  },
   "icons": { "16":  "img/icon16.png",
              "48":  "img/icon48.png",
              "128": "img/icon128.png" },
