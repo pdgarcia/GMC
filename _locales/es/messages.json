@@ -1,7 +1,7 @@
 {
   "extensionName": {
     "message": "GMC Gadget",
-    "description": "Nombre de la Extension."
+    "description": "Nombre de la Extensión."
   },
   "extensionDescription": {
     "message": "Global Messaging & Collaboration extension.",
@@ -20,7 +20,7 @@
     "description": "El sistema a detectado problemas."
   },
   "dateLabel": {
-    "message": "Ultima Modificacion:",
+    "message": "Ultima Modificación:",
     "description": "Fecha de la ultima modificacion de la informacion en el server."
   },
   "SPOCDispLabel": {
