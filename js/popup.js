@@ -35,6 +35,21 @@ function JSONGet(url){
 
     $('div.alertcategory').click(function(){ $(this).children().toggle(); })
 
+///////////////////  Events ////////////////////////////////////////////////////
+
+    var items = [];
+    $.each( data.events, function( key, val ) {
+        items.push( "<div class='eventtitle' id='" + key + "'>" + val.title);
+        items.push( "<div class='eventtitem' id='" + key + "'>" + val.timestamp + ":" + val.description + "</div>" );
+        items.push(  "</div>" );
+    });
+
+    $('div#events').append(items.join( "" ));
+
+    $('div.eventtitle').click(function(){ $(this).children().toggle(); })
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+
     var items = [];
     $.each( data.dispatcher, function( key, val ) {
         items.push( "<div class='spoc' id='" + key + "'><small>" + chrome.i18n.getMessage("SPOCDispLabel") + " " + key + ": </small>" + val + "</div>" );
