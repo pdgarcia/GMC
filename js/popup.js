@@ -51,8 +51,8 @@ function JSONGet(url){
 ///////////////////////////////////////////////////////////////////////////////////////////////
 
     var items = [];
-    $.each( data.dispatcher, function( key, val ) {
-        items.push( "<div class='spoc' id='" + key + "'><small>" + chrome.i18n.getMessage("SPOCDispLabel") + " " + key + ": </small>" + val + "</div>" );
+    $.each( data.spocs, function( key, val ) {
+        items.push( "<div class='spoc' id='" + key + "'><small>" + chrome.i18n.getMessage("SPOCDispLabel") + " " + val.Shift + ": </small>" + val.Dispatcher + "</div>" );
     });
     $('div#spocs').append(items.join( "" ));
 
