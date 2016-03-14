@@ -1,17 +1,17 @@
 function JSONGet(url){
     $.ajaxSetup({ cache:false });
     $.getJSON( url, function( data ) {
-    chrome.browserAction.setIcon({path:"img/icon_green.png"});
+    chrome.browserAction.setIcon({path: 'img/icon_green.png' });
     txtstatus=chrome.i18n.getMessage("statusOK");
     bkcolor='green';
 
     if(data.status > 10){
-        chrome.browserAction.setIcon({path:"img/icon_red.png"});
+        chrome.browserAction.setIcon({path: 'img/icon_red.png' });
         txtstatus=chrome.i18n.getMessage("statusNOK");
         bkcolor='#FF9933';
     }
     if(data.status > 50){
-        chrome.browserAction.setIcon({path:"img/icon_red.png"});
+        chrome.browserAction.setIcon({path: 'img/icon_red.png' });
         txtstatus=chrome.i18n.getMessage("statusNOK");
         bkcolor='red';
     }
@@ -20,7 +20,8 @@ function JSONGet(url){
         .html(chrome.i18n.getMessage("statusLabel") + " " + txtstatus + "<br>" + chrome.i18n.getMessage("dateLabel") + " " + data.lastupdate)
         .css( "background-color", bkcolor ).click(openTab);
 
-    $('div#tktunasigned').html(chrome.i18n.getMessage("tktunassigned") + " " + data.tktunasigned);
+    //$('div#tktunasigned').html(chrome.i18n.getMessage("tktunassigned") + " " + data.tktunasigned);
+    $('div#newevent').html(chrome.i18n.getMessage("neweventLabel")).click(openNewEvent);
 
     var items = [];
     $.each( data.alertlist, function( key, val ) {
@@ -74,6 +75,14 @@ function openTab(){
         Dashlink: 'http://rkamv1175.kau.roche.com/mstats/'
     }, function(items) {
         chrome.tabs.create({url: items.Dashlink}, function(tab) { });
+    });
+}
+
+function openNewEvent(){
+    chrome.storage.sync.get({
+        FormLnk: 'https://docs.google.com/a/roche.com/forms/d/1GpLYKJVn1aarrrPEgTYd2cqZtGxkx1ZjcaDjUFQrrD0/viewform?entry.969630452&entry.1103844286&entry.1925671173&entry.1151152595=Working+on&entry.1829425231=Low'
+    }, function(items) {
+        chrome.tabs.create({url: items.FormLnk}, function(tab) { });
     });
 }
 

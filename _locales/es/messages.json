@@ -35,6 +35,10 @@
     "message": "Tickets no assignados: ",
     "description": "Numero de tickets no assignados."
   },
+  "neweventLabel": {
+    "message": "Crear Nuevo Evento",
+    "description": "Crear Boton de Nuevo Evento."
+  },
   "NotificationMessage": {
     "message": "Problemas detectados",
     "description": "Mensaje de notificacion."

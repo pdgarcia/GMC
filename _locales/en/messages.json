@@ -35,6 +35,10 @@
     "message": "Unassigned Tickets: ",
     "description": "Number of Unassigned Tickets."
   },
+  "neweventLabel": {
+    "message": "Create New Event",
+    "description": "Create New Event Button."
+  },
   "NotificationMessage": {
     "message": "Issues detected",
     "description": "Notification Message."

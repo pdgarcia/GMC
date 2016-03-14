@@ -1,14 +1,15 @@
 // Saves options to chrome.storage
 function save_options() {
     var Dashlink = document.getElementById('Dashlink').value;
-    var GadLink  = document.getElementById('DataLink').value;
+    var DataLink = document.getElementById('DataLink').value;
+    var FormLnk = document.getElementById('FormLnk').value;
     var NotConf  = document.getElementById('NotConf').checked;
     chrome.storage.sync.set({
         Dashlink: Dashlink,
-        DataLink: GadLink,
+        DataLink: DataLink,
+        FormLnk: FormLnk,
         NotConf : NotConf
     }, function() {
-        // Update status to let user know options were saved.
         var status = document.getElementById('status');
         status.textContent = 'Options saved.';
         setTimeout(function() {
@@ -23,10 +24,12 @@ function restore_options() {
     chrome.storage.sync.get({
         Dashlink: 'http://rkamv1175.kau.roche.com/mstats/',
         DataLink: 'http://rkamv1175.kau.roche.com/mstats/gadget.html',
-        NotConf : true 
+        FormLnk:  'https://docs.google.com/a/roche.com/forms/d/1GpLYKJVn1aarrrPEgTYd2cqZtGxkx1ZjcaDjUFQrrD0/viewform?entry.969630452&entry.1103844286&entry.1925671173&entry.1151152595=Working+on&entry.1829425231=Low',
+        NotConf : true
     }, function(items) {
         document.getElementById('Dashlink').value  = items.Dashlink;
         document.getElementById('DataLink').value  = items.DataLink;
+        document.getElementById('FormLnk').value  = items.FormLnk;
         document.getElementById('NotConf').checked = items.NotConf;
     });
 }

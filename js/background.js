@@ -25,7 +25,7 @@ function ajaxJSONGet(url, callback){
         if (http_request.readyState === done && http_request.status === ok){
             callback(JSON.parse(http_request.responseText));
         } else {
-            chrome.browserAction.setIcon({path:"img/icon_gray.png"});
+            chrome.browserAction.setIcon({ path: 'img/icon_gray.png'});
         }
     };
     http_request.send();
@@ -34,13 +34,13 @@ function ajaxJSONGet(url, callback){
 function processData(data){
     console.log("Status Retrieved:"+data.status+ " PreviousStatus:"+localStorage['PreviousStatus']);
     if(data.status == 0){
-        chrome.browserAction.setIcon({path:"img/icon_green.png"});
+        chrome.browserAction.setIcon({ path: 'img/icon_green.png' });
         localStorage['PreviousStatus'] = 0;
     }else{
         if( localStorage['PreviousStatus'] == 0 ){
             LauchNotification()
         }
-        chrome.browserAction.setIcon({path:"img/icon_red.png"});
+        chrome.browserAction.setIcon({ path: 'img/icon_red.png' });
         localStorage['PreviousStatus'] = 1;
     }
 }
