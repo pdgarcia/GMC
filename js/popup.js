@@ -53,13 +53,13 @@ function JSONGet(url){
 
     var items = [];
     $.each( data.spocs, function( key, val ) {
-        items.push( "<div class='spoc' id='" + key + "'><small>" + chrome.i18n.getMessage("SPOCDispLabel") + " " + val.Shift + ": </small>" + val.Dispatcher + "</div>" );
+        items.push( "<div class='spoc' id='" + key + "'><small>" + chrome.i18n.getMessage("SPOCDispLabel") + " " + val.Status + ": </small>" + val.Member + "</div>" );
     });
     $('div#spocs').append(items.join( "" ));
 
     var items = [];
     $.each( data.oof, function( key, val ) {
-        items.push( "<div class='oof' id='" + key + "'><small>" + chrome.i18n.getMessage("OOFDispLabel") + ": </small>" + val + "</div>" );
+        items.push( "<div class='oof' id='" + key + "'><small>" + chrome.i18n.getMessage("OOFDispLabel") + " " + val.Status +": </small>" + val.Member + "</div>" );
     });
     $('div#oof').append(items.join( "" ));
 
